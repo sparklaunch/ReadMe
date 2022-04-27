@@ -31,6 +31,24 @@ extension Image {
     }
 }
 
+struct BookRowView: View {
+    let book: Book
+    var body: some View {
+        HStack {
+            Book.Image(title: book.title)
+            VStack(alignment: .leading) {
+                Text(book.title)
+                    .font(.title2)
+                Text(book.author)
+                    .font(.title3)
+                    .foregroundColor(.secondary)
+            }
+            .lineLimit(1)
+        }
+        .padding(.vertical)
+    }
+}
+
 struct Book_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -40,22 +58,6 @@ struct Book_Previews: PreviewProvider {
         }
         .padding()
         .previewLayout(.sizeThatFits)
-    }
-}
-
-struct BookRowView: View {
-    let book: Book
-    var body: some View {
-        HStack {
-            Book.Image(title: book.title)
-            VStack {
-                Text(book.title)
-                    .font(.title2)
-                Text(book.author)
-                    .font(.title3)
-                    .foregroundColor(.secondary)
-            }
-        }
     }
 }
 

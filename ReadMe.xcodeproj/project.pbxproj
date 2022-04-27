@@ -15,6 +15,8 @@
 		90960F032818C19400538202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90960EF02818C19400538202 /* Assets.xcassets */; };
 		90960F102818C2CB00538202 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F0F2818C2CB00538202 /* Book.swift */; };
 		90960F122818C38C00538202 /* BookViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F112818C38C00538202 /* BookViews.swift */; };
+		90960F142818CB2400538202 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F132818CB2400538202 /* Library.swift */; };
+		90960F162818CCC900538202 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F152818CCC900538202 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		90960EFD2818C19400538202 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		90960F0F2818C2CB00538202 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		90960F112818C38C00538202 /* BookViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViews.swift; sourceTree = "<group>"; };
+		90960F132818CB2400538202 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		90960F152818CCC900538202 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 			children = (
 				90960EEF2818C19200538202 /* ContentView.swift */,
 				90960F112818C38C00538202 /* BookViews.swift */,
+				90960F152818CCC900538202 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				90960F0F2818C2CB00538202 /* Book.swift */,
+				90960F132818CB2400538202 /* Library.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,7 +213,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				90960F002818C19400538202 /* ContentView.swift in Sources */,
+				90960F162818CCC900538202 /* DetailView.swift in Sources */,
 				90960EFE2818C19400538202 /* ReadMeApp.swift in Sources */,
+				90960F142818CB2400538202 /* Library.swift in Sources */,
 				90960F102818C2CB00538202 /* Book.swift in Sources */,
 				90960F122818C38C00538202 /* BookViews.swift in Sources */,
 			);

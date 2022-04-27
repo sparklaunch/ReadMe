@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Group {
-            BookRowView(book: Book(title: "Memorandum", author: "Jinwook Kim"))
+        List(Library().sortedBooks, id: \.title) { book in
+            BookRowView(book: book)
         }
     }
 }
