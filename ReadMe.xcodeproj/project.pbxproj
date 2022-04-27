@@ -13,6 +13,8 @@
 		90960F012818C19400538202 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960EEF2818C19200538202 /* ContentView.swift */; };
 		90960F022818C19400538202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90960EF02818C19400538202 /* Assets.xcassets */; };
 		90960F032818C19400538202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90960EF02818C19400538202 /* Assets.xcassets */; };
+		90960F102818C2CB00538202 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F0F2818C2CB00538202 /* Book.swift */; };
+		90960F122818C38C00538202 /* BookViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F112818C38C00538202 /* BookViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		90960EF52818C19400538202 /* ReadMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90960EFB2818C19400538202 /* ReadMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90960EFD2818C19400538202 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		90960F0F2818C2CB00538202 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		90960F112818C38C00538202 /* BookViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				90960EEF2818C19200538202 /* ContentView.swift */,
+				90960F112818C38C00538202 /* BookViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 		90960F0E2818C1BE00538202 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				90960F0F2818C2CB00538202 /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +208,8 @@
 			files = (
 				90960F002818C19400538202 /* ContentView.swift in Sources */,
 				90960EFE2818C19400538202 /* ReadMeApp.swift in Sources */,
+				90960F102818C2CB00538202 /* Book.swift in Sources */,
+				90960F122818C38C00538202 /* BookViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
