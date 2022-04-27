@@ -38,5 +38,31 @@ struct Book_Previews: PreviewProvider {
             Book.Image(title: "")
             Book.Image(title: "🍺")
         }
+        .padding()
+        .previewLayout(.sizeThatFits)
+    }
+}
+
+struct BookRowView: View {
+    let book: Book
+    var body: some View {
+        HStack {
+            Book.Image(title: book.title)
+            VStack {
+                Text(book.title)
+                    .font(.title2)
+                Text(book.author)
+                    .font(.title3)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+}
+
+struct BookRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        BookRowView(book: Book(title: "Memorandum", author: "Jinwook"))
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }
