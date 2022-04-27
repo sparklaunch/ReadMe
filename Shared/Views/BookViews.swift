@@ -10,12 +10,13 @@ import SwiftUI
 extension Book {
     struct Image: View {
         let title: String
+        var size: CGFloat?
         var body: some View {
             let symbol = SwiftUI.Image(title: title) ?? .init(systemName: "book")
             symbol
                 .resizable()
                 .scaledToFit()
-                .frame(width: 80, height: 80)
+                .frame(width: size, height: size)
                 .font(.title.weight(.light))
                 .foregroundColor(.secondary.opacity(0.5))
         }
@@ -34,18 +35,14 @@ extension Image {
 struct BookRowView: View {
     let book: Book
     var body: some View {
-        HStack {
-            Book.Image(title: book.title)
-            VStack(alignment: .leading) {
-                Text(book.title)
-                    .font(.title2)
-                Text(book.author)
-                    .font(.title3)
-                    .foregroundColor(.secondary)
+        NavigationLink(destination: DetailView(book: book)) {
+            HStack {
+                Book.Image(title: book.title, size: 80)
+                TitleAndAuthorView(book: book, titleFont: .title2, authorFont: .title3)
+                    .lineLimit(1)
             }
-            .lineLimit(1)
+            .padding(.vertical)
         }
-        .padding(.vertical)
     }
 }
 
@@ -63,7 +60,7 @@ struct Book_Previews: PreviewProvider {
 
 struct BookRowView_Previews: PreviewProvider {
     static var previews: some View {
-        BookRowView(book: Book(title: "Memorandum", author: "Jinwook"))
+        BookRowView(book: .init())
             .padding()
             .previewLayout(.sizeThatFits)
     }
