@@ -54,9 +54,9 @@
 		90960EED2818C19200538202 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				90960EEE2818C19200538202 /* ReadMeApp.swift */,
-				90960EEF2818C19200538202 /* ContentView.swift */,
-				90960EF02818C19400538202 /* Assets.xcassets */,
+				90960F0E2818C1BE00538202 /* Models */,
+				90960F0D2818C1B800538202 /* Views */,
+				90960F0C2818C1AF00538202 /* App */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -76,6 +76,30 @@
 				90960EFD2818C19400538202 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		90960F0C2818C1AF00538202 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				90960EEE2818C19200538202 /* ReadMeApp.swift */,
+				90960EF02818C19400538202 /* Assets.xcassets */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		90960F0D2818C1B800538202 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				90960EEF2818C19200538202 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		90960F0E2818C1BE00538202 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +267,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -295,6 +321,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
