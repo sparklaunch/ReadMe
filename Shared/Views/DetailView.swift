@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @State private var showingImagePicker = false
+    @State private var showingConfirmationDialog = false
     @State private var selectedImage: UIImage?
     @Binding var image: Image?
     let book: Book
@@ -18,16 +19,31 @@ struct DetailView: View {
             VStack {
                 Book.Image(title: book.title, image: image, cornerRadius: 16)
                     .scaledToFit()
-                Button("Update Image…") {
-                    showingImagePicker = true
+                HStack {
+                    Button("Update Image…") {
+                        showingImagePicker = true
+                    }
+                    .padding()
+                    if image != nil {
+                        Button("Delete Image…") {
+                            showingConfirmationDialog = true
+                        }
+                        .padding()
+                    }
                 }
-                .padding()
             }
             Spacer()
         }
         .padding()
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: $selectedImage)
+        }
+        .confirmationDialog("Delete image for \(book.title)?", isPresented: $showingConfirmationDialog) {
+            Button("Delete", role: .destructive) {
+                image = nil
+            }
+        } message: {
+            Text("Delete image for \(book.title)?")
         }
     }
     func loadImage() {

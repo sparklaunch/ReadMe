@@ -73,6 +73,7 @@ struct Book_Previews: PreviewProvider {
         }
         .padding()
         .previewLayout(.sizeThatFits)
+        .previewedInAllColorSchemes
     }
 }
 
@@ -81,5 +82,12 @@ struct BookRowView_Previews: PreviewProvider {
         BookRowView(book: .init(), image: .constant(Image(systemName: "book")))
             .padding()
             .previewLayout(.sizeThatFits)
+            .previewedInAllColorSchemes
+    }
+}
+
+extension View {
+    var previewedInAllColorSchemes: some View {
+        ForEach(ColorScheme.allCases, id: \.self, content: preferredColorScheme)
     }
 }
