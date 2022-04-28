@@ -10,16 +10,33 @@ import SwiftUI
 extension Book {
     struct Image: View {
         let title: String
+        let image: SwiftUI.Image?
+        let cornerRadius: Double
         var size: CGFloat?
         var body: some View {
-            let symbol = SwiftUI.Image(title: title) ?? .init(systemName: "book")
-            symbol
-                .resizable()
-                .scaledToFit()
-                .frame(width: size, height: size)
-                .font(.title.weight(.light))
-                .foregroundColor(.secondary.opacity(0.5))
+            if let image = image {
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: size, height: size)
+                    .cornerRadius(cornerRadius)
+            } else {
+                let symbol = SwiftUI.Image(title: title) ?? .init(systemName: "book")
+                symbol
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: size, height: size)
+                    .font(.title.weight(.light))
+                    .foregroundColor(.secondary.opacity(0.5))
+            }
         }
+    }
+}
+
+extension Book.Image {
+    /// A PREVIEW IMAGE.
+    init(title: String) {
+        self.init(title: title, image: nil, cornerRadius: .init())
     }
 }
 
@@ -34,10 +51,11 @@ extension Image {
 
 struct BookRowView: View {
     let book: Book
+    @Binding var image: Image?
     var body: some View {
-        NavigationLink(destination: DetailView(book: book)) {
+        NavigationLink(destination: DetailView(image: $image, book: book)) {
             HStack {
-                Book.Image(title: book.title, size: 80)
+                Book.Image(title: book.title, image: image, cornerRadius: 12, size: 80)
                 TitleAndAuthorView(book: book, titleFont: .title2, authorFont: .title3)
                     .lineLimit(1)
             }
@@ -60,7 +78,7 @@ struct Book_Previews: PreviewProvider {
 
 struct BookRowView_Previews: PreviewProvider {
     static var previews: some View {
-        BookRowView(book: .init())
+        BookRowView(book: .init(), image: .constant(Image(systemName: "book")))
             .padding()
             .previewLayout(.sizeThatFits)
     }

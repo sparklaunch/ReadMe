@@ -8,14 +8,33 @@
 import SwiftUI
 
 struct DetailView: View {
+    @State private var showingImagePicker = false
+    @State private var selectedImage: UIImage?
+    @Binding var image: Image?
     let book: Book
     var body: some View {
         VStack(alignment: .leading) {
             TitleAndAuthorView(book: book, titleFont: .largeTitle, authorFont: .title3)
-            Book.Image(title: book.title)
+            VStack {
+                Book.Image(title: book.title, image: image, cornerRadius: 16)
+                    .scaledToFit()
+                Button("Update Image…") {
+                    showingImagePicker = true
+                }
+                .padding()
+            }
             Spacer()
         }
-        .padding() 
+        .padding()
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: $selectedImage)
+        }
+    }
+    func loadImage() {
+        guard let selectedImage = selectedImage else {
+            return
+        }
+        image = Image(uiImage: selectedImage)
     }
 }
 
@@ -37,6 +56,6 @@ struct TitleAndAuthorView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(book: .init())
+        DetailView(image: .constant(Image(systemName: "book")), book: .init())
     }
 }

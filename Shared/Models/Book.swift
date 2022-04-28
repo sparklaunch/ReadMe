@@ -5,9 +5,7 @@
 //  Created by Jinwook Kim on 2022/04/27.
 //
 
-import Foundation
-
-struct Book {
+struct Book: Hashable {
     let title: String
     let author: String
     init(title: String = "Memorandum", author: String = "Jinwook Kim") {
