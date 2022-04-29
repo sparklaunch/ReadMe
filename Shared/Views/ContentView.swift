@@ -30,9 +30,7 @@ struct ContentView: View {
                     BookRowView(book: book, image: $library.images[book])
                 }
             }
-            .sheet(isPresented: $showingAddModal) {
-                AddModalView()
-            }
+            .sheet(isPresented: $showingAddModal, content: AddModalView.init)
             .navigationTitle("My Library")
         }
     }

@@ -24,42 +24,10 @@ struct DetailView: View {
                 }
                 TitleAndAuthorView(book: book, titleFont: .largeTitle, authorFont: .title3)
             }
-            TextField("Write your micro review…", text: $book.microReview)
-            VStack {
-                Book.Image(title: book.title, image: image, cornerRadius: 16)
-                    .scaledToFit()
-                HStack {
-                    Button("Update Image…") {
-                        showingImagePicker = true
-                    }
-                    .padding()
-                    if image != nil {
-                        Button("Delete Image…") {
-                            showingConfirmationDialog = true
-                        }
-                        .padding()
-                    }
-                }
-            }
+            MicroReviewAndImagePickerView(book: book, image: $image)
             Spacer()
         }
         .padding()
-        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-            ImagePicker(image: $selectedImage)
-        }
-        .confirmationDialog("Delete image for \(book.title)?", isPresented: $showingConfirmationDialog) {
-            Button("Delete", role: .destructive) {
-                image = nil
-            }
-        } message: {
-            Text("Delete image for \(book.title)?")
-        }
-    }
-    func loadImage() {
-        guard let selectedImage = selectedImage else {
-            return
-        }
-        image = Image(uiImage: selectedImage)
     }
 }
 
