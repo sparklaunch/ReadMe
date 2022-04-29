@@ -14,7 +14,7 @@ struct DetailView: View {
     @Binding var image: Image?
     @ObservedObject var book: Book
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 16) {
             HStack(spacing: 16) {
                 Button {
                     book.readMe.toggle()
@@ -24,6 +24,7 @@ struct DetailView: View {
                 }
                 TitleAndAuthorView(book: book, titleFont: .largeTitle, authorFont: .title3)
             }
+            TextField("Write your micro review…", text: $book.microReview)
             VStack {
                 Book.Image(title: book.title, image: image, cornerRadius: 16)
                     .scaledToFit()

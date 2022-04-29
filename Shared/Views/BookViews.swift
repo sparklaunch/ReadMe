@@ -50,14 +50,21 @@ extension Image {
 }
 
 struct BookRowView: View {
-    let book: Book
+    @ObservedObject var book: Book
     @Binding var image: Image?
     var body: some View {
         NavigationLink(destination: DetailView(image: $image, book: book)) {
             HStack {
                 Book.Image(title: book.title, image: image, cornerRadius: 12, size: 80)
-                TitleAndAuthorView(book: book, titleFont: .title2, authorFont: .title3)
-                    .lineLimit(1)
+                VStack(alignment: .leading) {
+                    TitleAndAuthorView(book: book, titleFont: .title2, authorFont: .title3)
+                        .lineLimit(1)
+                    if !book.microReview.isEmpty {
+                        Text(book.microReview)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
             .padding(.vertical)
         }
