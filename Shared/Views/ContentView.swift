@@ -11,8 +11,23 @@ struct ContentView: View {
     @State private var library = Library()
     var body: some View {
         NavigationView {
-            List(Library().sortedBooks) { book in
-                BookRowView(book: book, image: $library.images[book])
+            List {
+                Button {
+
+                } label: {
+                    VStack(spacing: 6) {
+                        Image(systemName: "book.circle")
+                            .font(.system(size: 60))
+                        Text("Add new book…")
+                            .font(.title2)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.borderless)
+                .padding(.vertical, 8)
+                ForEach(Library().sortedBooks) { book in
+                    BookRowView(book: book, image: $library.images[book])
+                }
             }
             .navigationTitle("My Library")
         }
