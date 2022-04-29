@@ -18,6 +18,7 @@
 		90960F142818CB2400538202 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F132818CB2400538202 /* Library.swift */; };
 		90960F162818CCC900538202 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90960F152818CCC900538202 /* DetailView.swift */; };
 		90FA9994281A14FB004BC2C9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FA9993281A14FB004BC2C9 /* ImagePicker.swift */; };
+		90FA99D1281B6F99004BC2C9 /* AddModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FA99D0281B6F99004BC2C9 /* AddModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		90960F132818CB2400538202 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		90960F152818CCC900538202 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		90FA9993281A14FB004BC2C9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		90FA99D0281B6F99004BC2C9 /* AddModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				90960EEF2818C19200538202 /* ContentView.swift */,
 				90960F112818C38C00538202 /* BookViews.swift */,
 				90960F152818CCC900538202 /* DetailView.swift */,
+				90FA99D0281B6F99004BC2C9 /* AddModalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				90FA9994281A14FB004BC2C9 /* ImagePicker.swift in Sources */,
 				90960F142818CB2400538202 /* Library.swift in Sources */,
 				90960F102818C2CB00538202 /* Book.swift in Sources */,
+				90FA99D1281B6F99004BC2C9 /* AddModalView.swift in Sources */,
 				90960F122818C38C00538202 /* BookViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

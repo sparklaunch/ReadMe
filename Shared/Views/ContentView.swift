@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var library = Library()
+    @State private var showingAddModal = false
     var body: some View {
         NavigationView {
             List {
                 Button {
-
+                    showingAddModal = true
                 } label: {
                     VStack(spacing: 6) {
                         Image(systemName: "book.circle")
@@ -28,6 +29,9 @@ struct ContentView: View {
                 ForEach(Library().sortedBooks) { book in
                     BookRowView(book: book, image: $library.images[book])
                 }
+            }
+            .sheet(isPresented: $showingAddModal) {
+                AddModalView()
             }
             .navigationTitle("My Library")
         }
