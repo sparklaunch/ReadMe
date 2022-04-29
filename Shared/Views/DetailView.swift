@@ -12,10 +12,18 @@ struct DetailView: View {
     @State private var showingConfirmationDialog = false
     @State private var selectedImage: UIImage?
     @Binding var image: Image?
-    let book: Book
+    @ObservedObject var book: Book
     var body: some View {
         VStack(alignment: .leading) {
-            TitleAndAuthorView(book: book, titleFont: .largeTitle, authorFont: .title3)
+            HStack(spacing: 16) {
+                Button {
+                    book.readMe.toggle()
+                } label: {
+                    Image(systemName: book.readMe ? "bookmark.fill" : "bookmark")
+                        .font(.system(size: 48, weight: .light))
+                }
+                TitleAndAuthorView(book: book, titleFont: .largeTitle, authorFont: .title3)
+            }
             VStack {
                 Book.Image(title: book.title, image: image, cornerRadius: 16)
                     .scaledToFit()
