@@ -58,13 +58,14 @@ struct BookRowView: View {
                 Book.Image(title: book.title, image: image, cornerRadius: 12, size: 80)
                 VStack(alignment: .leading) {
                     TitleAndAuthorView(book: book, titleFont: .title2, authorFont: .title3)
-                        .lineLimit(1)
                     if !book.microReview.isEmpty {
+                        Spacer()
                         Text(book.microReview)
-                            .font(.body)
+                            .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
                 }
+                .lineLimit(1)
             }
             .padding(.vertical)
         }
