@@ -51,11 +51,11 @@ extension Image {
 
 struct BookRowView: View {
     @ObservedObject var book: Book
-    @Binding var image: Image?
+    @EnvironmentObject var library: Library
     var body: some View {
-        NavigationLink(destination: DetailView(image: $image, book: book)) {
+        NavigationLink(destination: DetailView(book: book)) {
             HStack {
-                Book.Image(title: book.title, image: image, cornerRadius: 12, size: 80)
+                Book.Image(title: book.title, image: library.images[book], cornerRadius: 12, size: 80)
                 VStack(alignment: .leading) {
                     TitleAndAuthorView(book: book, titleFont: .title2, authorFont: .title3)
                     if !book.microReview.isEmpty {
@@ -87,7 +87,7 @@ struct Book_Previews: PreviewProvider {
 
 struct BookRowView_Previews: PreviewProvider {
     static var previews: some View {
-        BookRowView(book: .init(), image: .constant(Image(systemName: "book")))
+        BookRowView(book: .init())
             .padding()
             .previewLayout(.sizeThatFits)
             .previewedInAllColorSchemes

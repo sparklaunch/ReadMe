@@ -7,16 +7,21 @@
 
 import SwiftUI
 
-struct Library {
+class Library: ObservableObject {
     var sortedBooks: [Book] {
         booksCache
     }
-    private var booksCache: [Book] = [
+    /// Adds a new book.
+    func addNewBook(_ book: Book, image: Image?) {
+        booksCache.insert(book, at: .zero)
+        images[book] = image ?? .init(systemName: "book")
+    }
+    @Published var booksCache: [Book] = [
         .init(title: "Memorandum", author: "Jinwook Kim"),
         .init(title: "Biography", author: "Jinwook Kim"),
         .init(title: "Anthropology", author: "Jinwook Kim"),
         .init(title: "Psychiatry", author: "Jinwook Kim"),
         .init(title: "Biodiversity", author: "Jinwook Kim")
     ]
-    var images: [Book: Image] = [:]
+    @Published var images: [Book: Image] = [:]
 }

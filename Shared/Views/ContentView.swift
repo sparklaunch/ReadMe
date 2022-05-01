@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var library = Library()
+    @EnvironmentObject var library: Library
     @State private var showingAddModal = false
     var body: some View {
         NavigationView {
@@ -26,11 +26,12 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
                 .buttonStyle(.borderless)
                 .padding(.vertical, 8)
-                ForEach(Library().sortedBooks) { book in
-                    BookRowView(book: book, image: $library.images[book])
+                ForEach(library.sortedBooks) { book in
+                    BookRowView(book: book)
                 }
             }
-            .sheet(isPresented: $showingAddModal, content: AddModalView.init)
+            .sheet(isPresented: $showingAddModal) { AddModalView(showingAddModal: $showingAddModal)
+            }
             .navigationTitle("My Library")
         }
     }
@@ -40,5 +41,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .previewedInAllColorSchemes
+            .environmentObject(Library())
     }
 }

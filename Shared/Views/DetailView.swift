@@ -11,7 +11,7 @@ struct DetailView: View {
     @State private var showingImagePicker = false
     @State private var showingConfirmationDialog = false
     @State private var selectedImage: UIImage?
-    @Binding var image: Image?
+    @EnvironmentObject var library: Library
     @ObservedObject var book: Book
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -24,7 +24,7 @@ struct DetailView: View {
                 }
                 TitleAndAuthorView(book: book, titleFont: .largeTitle, authorFont: .title3)
             }
-            MicroReviewAndImagePickerView(book: book, image: $image)
+            MicroReviewAndImagePickerView(book: book, image: $library.images[book])
             Spacer()
         }
         .padding()
@@ -49,6 +49,7 @@ struct TitleAndAuthorView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(image: .constant(Image(systemName: "book")), book: .init())
+        DetailView(book: .init())
+            .environmentObject(Library())
     }
 }
