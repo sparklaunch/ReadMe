@@ -17,11 +17,11 @@ struct AddModalView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Title and Author") {
+                SwiftUI.Section("Title and Author") {
                     TextField("Type the title", text: $book.title)
                     TextField("Type the author", text: $book.author)
                 }
-                Section("Image") {
+                SwiftUI.Section("Image") {
                     MicroReviewAndImagePickerView(book: book, image: $image)
                 }
             }

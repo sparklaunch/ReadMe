@@ -28,6 +28,11 @@ struct DetailView: View {
             Spacer()
         }
         .padding()
+        .onDisappear {
+            withAnimation {
+                library.sortBooks()
+            }
+        }
     }
 }
 
