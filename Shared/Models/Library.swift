@@ -30,6 +30,9 @@ class Library: ObservableObject {
         booksCache.insert(book, at: .zero)
         images[book] = image ?? .init(systemName: "book")
     }
+    func deleteBook() {
+        
+    }
     @Published var booksCache: [Book] = [
         .init(title: "Memorandum", author: "Jinwook Kim"),
         .init(title: "Biography", author: "Jinwook Kim"),

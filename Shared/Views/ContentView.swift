@@ -53,7 +53,28 @@ private struct SectionView: View {
             SwiftUI.Section {
                 ForEach(books) { book in
                     BookRowView(book: book)
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                withAnimation {
+                                    book.readMe.toggle()
+                                    library.sortBooks()
+                                }
+                            } label: {
+                                book.readMe
+                                ? Label("Finished", systemImage: "bookmark.slash")
+                                : Label("Read Me!", systemImage: "bookmark")
+                            }
+                            .tint(.accentColor)
+                        }
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                 }
+                .labelStyle(.iconOnly)
             } header: {
                 ZStack {
                     Image(systemName: "book")
