@@ -30,7 +30,7 @@ struct ContentView: View {
                     BookRowView(book: book)
                 }
             }
-            .sheet(isPresented: $showingAddModal) { AddModalView(showingAddModal: $showingAddModal)
+            .sheet(isPresented: $showingAddModal) { AddModalView()
             }
             .navigationTitle("My Library")
         }

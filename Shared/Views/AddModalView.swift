@@ -12,8 +12,8 @@ struct AddModalView: View {
     @State private var showingImagePicker: Bool = false
     @State private var selectedImage: UIImage?
     @State private var image: Image?
-    @Binding var showingAddModal: Bool
     @EnvironmentObject var library: Library
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationView {
             Form {
@@ -32,8 +32,10 @@ struct AddModalView: View {
                 ToolbarItem(placement: .status) {
                     Button("Add to library…") {
                         library.addNewBook(book, image: image)
-                        showingAddModal = false
+                        dismiss()
                     }
+                    .disabled(
+                        [book.title, book.author].contains(where: \.isEmpty))
                 }
             }
             .navigationTitle("Got a new book?")
@@ -49,7 +51,7 @@ struct AddModalView: View {
 
 struct AddModalView_Previews: PreviewProvider {
     static var previews: some View {
-        AddModalView(showingAddModal: .constant(true))
+        AddModalView()
             .environmentObject(Library())
     }
 }
