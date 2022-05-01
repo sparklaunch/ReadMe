@@ -14,10 +14,17 @@ enum Section: CaseIterable {
 
 class Library: ObservableObject {
     var sortedBooks: [Section : [Book]] {
-        let groupedBooks = Dictionary(grouping: booksCache, by: \.readMe)
-        return Dictionary(uniqueKeysWithValues: groupedBooks.map {
-            (($0.key ? .readMe : .finished), $0.value)
-        })
+        get {
+            let groupedBooks = Dictionary(grouping: booksCache, by: \.readMe)
+            return Dictionary(uniqueKeysWithValues: groupedBooks.map {
+                (($0.key ? .readMe : .finished), $0.value)
+            })
+        }
+        set {
+            booksCache = newValue
+                .sorted { $1.key == .finished }
+                .flatMap { $0.value }
+        }
     }
     func sortBooks() {
         booksCache = sortedBooks
@@ -30,8 +37,17 @@ class Library: ObservableObject {
         booksCache.insert(book, at: .zero)
         images[book] = image ?? .init(systemName: "book")
     }
-    func deleteBook() {
-        
+    func deleteBooks(at offsets: IndexSet, section: Section) {
+        let booksBeforeDeletion = booksCache
+        sortedBooks[section]?.remove(atOffsets: offsets)
+        for change in booksCache.difference(from: booksBeforeDeletion) {
+            if case .remove(_, let deletedBook, _) = change {
+                images[deletedBook] = nil
+            }
+        }
+    }
+    func moveBooks(oldOffsets: IndexSet, newOffset: Int, section: Section) {
+        sortedBooks[section]?.move(fromOffsets: oldOffsets, toOffset: newOffset)
     }
     @Published var booksCache: [Book] = [
         .init(title: "Memorandum", author: "Jinwook Kim"),

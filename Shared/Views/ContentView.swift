@@ -33,6 +33,7 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddModal) { AddModalView()
             }
             .navigationTitle("My Library")
+            .toolbar(content: EditButton.init)
         }
     }
 }
@@ -68,11 +69,22 @@ private struct SectionView: View {
                         }
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
-
+                                guard let index = books.firstIndex(where: { $0.id == book.id }) else {
+                                    return
+                                }
+                                withAnimation {
+                                    library.deleteBooks(at: .init(integer: index), section: section)
+                                }
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }
                         }
+                }
+                .onDelete { indexSet in
+                    library.deleteBooks(at: indexSet, section: section)
+                }
+                .onMove { indices, newOffset in
+                    library.moveBooks(oldOffsets: indices, newOffset: newOffset, section: section)
                 }
                 .labelStyle(.iconOnly)
             } header: {
